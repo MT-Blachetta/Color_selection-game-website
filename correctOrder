@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<style>
+ ol { display: inline-block; 
+      /*float: left; ?*/
+      width: 25%;
+      padding-right: 2%;
+      padding-left: 2%;
+      margin-right: 3%;	
+      border: 1px solid green;}
+
+li { padding: 1px; 
+     border: 1px solid black;}
+
+div { margin: 5% 5% 3% 3%; }
+
+
+aside { 
+display: inline-block;
+margin: 3%; 
+width: 51%;  
+border: 1px solid red;}
+
+pre { font-size: 20px;
+      margin: 5px; }
+
+
+</style>
+
+
+<script language="javascript" type="text/javascript">
+
+var status = 0;
+
+function insert(obj){
+
+var entry = obj.innerText.trim();
+alert(status + ".");
+var listelem = document.getElementById(status + ".");
+listelem.innerText = entry;
+status += 1;
+
+obj.parentNode.removeChild(obj);
+} 
+
+
+</script>
+
+</head>
+
+<body>
+
+<div id="titel">
+some more independent content...
+</div>
+
+<div id="task" style="width: 100%">
+
+
+<ol>
+<li id="0."></li>
+<li id="01."></li>
+<li id="011."></li>
+<li id="0111."></li>
+<li id="01111."></li>
+<li id="011111."></li>
+<li id="0111111."></li>
+<li id="01111111."></li>
+<li id="011111111."></li>
+<li id="0111111111."></li>
+</ol>
+
+<aside>
+<pre onclick="insert(this);">	  first</pre>
+<pre onclick="insert(this);">	                     second</pre>
+<pre onclick="insert(this);">	                                            third</pre>
+<pre onclick="insert(this);">	  efefef</pre>
+<pre onclick="insert(this);">	                                  eferf</pre>
+<pre onclick="insert(this);">	          vvrevr</pre>
+<pre onclick="insert(this);">	  first</pre>
+<pre onclick="insert(this);">	                     second</pre>
+<pre onclick="insert(this);">	                                            third</pre>
+<pre onclick="insert(this);">	  efefef</pre>
+</aside>
+
+</div>
+
+
+<div id="confirm" style="clear: both;">
+
+<button onclick="location.reload();">RESET</button>
+
+some more independent content...
+
+</div>
+
+
+</body>
+
+
+</html>

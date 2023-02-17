@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<head>
+
+<meta charset="utf-8">
+
+<style>
+
+span {
+
+height: 50px;
+width: 50px;
+border: 1px solid black;
+margin: 45px;
+font-style: italic;
+font-size: 20px;
+
+ }
+
+#red {background-color: red;}
+#green {background-color: green;}
+#blue {background-color: blue;}
+#orange {background-color: orange;}
+
+div { margin: 100px; }
+
+p { border: 1px solid black; 
+
+    min-height: 50px;}
+
+
+
+</style>
+
+<script>
+
+var selectInfo = [];
+
+function init() {
+selectInfo.push(new entry("red",'X'));
+selectInfo.push(new entry("green",'X'));
+selectInfo.push(new entry("blue",'X'));
+selectInfo.push(new entry("orange",'X'));
+}
+
+function show() {
+var s = "";
+for(k in selectInfo) { s += selectInfo[k].element + " " + selectInfo[k].layer + " | "; }
+alert(s); }
+
+function entry (term, pos) {
+
+this.element = term;
+this.layer = pos;
+
+}
+
+
+function itemSet (item, lev) {
+
+for (i in selectInfo) { 
+if(selectInfo[i].element == item) { selectInfo[i].layer = lev; } 
+}
+
+}
+
+function allowDrop(e) {
+    e.preventDefault();
+}
+
+function drag(e) {
+    e.dataTransfer.setData("targetId", e.target.id);
+}
+
+
+function drop(e) {
+    e.preventDefault();
+    var data = e.dataTransfer.getData("targetId");
+    var dragitem = document.getElementById(data);
+    itemSet(dragitem.id ,e.target.id);
+    e.target.appendChild(dragitem);
+}
+
+
+
+</script>
+
+</head>
+
+<html>
+
+<body onload="init();">
+
+
+<div id="titel">
+INHALTS BLOCK
+</div>
+
+<div style="text-align: center;">
+<span id="red" draggable="true" ondragstart="drag(event)">red  </span>
+<span id="green" draggable="true" ondragstart="drag(event)">green  </span>
+<span id="blue" draggable="true" ondragstart="drag(event)">blue  </span>
+<span id="orange" draggable="true" ondragstart="drag(event)">orange  </span>
+</div>
+
+
+
+<div>
+
+<p id="A" ondrop="drop(event)" ondragover="allowDrop(event)"> </p>
+<p id="B" ondrop="drop(event)" ondragover="allowDrop(event)"> </p>
+<p id="C" ondrop="drop(event)" ondragover="allowDrop(event)"> </p>
+<p id="D" ondrop="drop(event)" ondragover="allowDrop(event)"> </p>
+
+</div>
+
+<div>
+<button onclick="show();">SEND</button>
+</div>
+
+</body>
+
+
+</html>

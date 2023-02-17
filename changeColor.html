@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<style>
+
+
+.selected {
+font-style: bold;
+font-size: 20 pt;
+border: 2px solid black; 
+}
+
+span { 
+display: inline-block;
+width: 50px; 
+height: 50px;
+}
+
+
+
+</style>
+
+</head>
+
+<script>
+wordArray = [];
+
+
+function term(word, color, pos) {
+
+this.word = word;
+this.color = color;
+this.posId = pos
+
+}   
+
+
+
+wordArray.push(new term("Blatt","special","0"));
+
+for(var w = 0; w < Blau.length; w++){
+wordArray.push(new term(Blau[w],"blue","0") );
+}
+
+for(var w = 0; w < Gruen.length; w++){
+wordArray.push(new term(Gruen[w],"green","0") );
+}
+
+for(var w = 0; w < Gelb.length; w++){
+wordArray.push(new term(Gelb[w],"orange","0") );
+}
+
+for(var w = 0; w < Rot.length; w++){
+wordArray.push(new term(Rot[w],"red","0") );
+}
+
+for(var w = 0; w < Violett.length; w++){
+wordArray.push(new term(Violett[w],"purple","0") );
+}
+
+for(var w = 0; w < Silber.length; w++){
+wordArray.push(new term(Silber[w],"grey","0") );
+}
+
+wordArray.permute();
+wordArray.permute();
+
+
+
+cells = document.getElementsByTagName("td");
+
+for(var i = 0; i < cells.length; i++){
+
+wordArray[i].posId = cells[i].id;
+
+cells[i].innerText = wordArray[i].word;
+cells[i].setAttribute("class",wordArray[i].color);
+
+cells[i].addEventListener("click", function() {
+
+if(chosen){
+
+if(chosen.id != this.id){
+
+chosen.classList.remove("selected");
+this.classList.add("selected");
+chosen = this;
+}
+else { 
+
+this.classList.remove("selected");
+chosen = null; }
+
+}
+
+else {
+this.classList.add("selected");
+chosen = this; }
+
+});
+
+}
+
+
+colorcanvas = getElementsByTagName("canvas");
+
+for (j in colorcanvas) {
+colorcanvas[j].addEventListener("click", function() {
+if(chosen){
+var l = idToIndex(chosen.id);
+chosen.classList.remove(wordArray[l].color);
+wordArray[l].color = this.id;
+chosen.classList.add(this.id);} });
+}
+
+</script>
+
+</head>
+
+<div>
+
+<span id="red">red</span> <span id="blue">blue</span> <span id="green">green<span> <span id="orange">orange</span> <span id="purple">purple</span> <span id="grey">grey</span> 
+
+</div>
+
+
+
+
+
+
+
+
+</html>

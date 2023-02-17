@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<style>
+
+
+div { text-align: center;
+	height: 200px;
+
+ }
+
+button { 
+width: 75px;
+height: 75px;
+margin: 20px; }
+
+button:hover {border: 2px solid black; } 
+
+
+/*
+td { 
+display: inline-block;
+padding: 2 em;
+margin: 4 em; 
+font-size: 20 pt;
+font-family: "Arial", sans Serif;
+font-style: bold; 
+} */
+
+#blue { background-color: blue; }
+#green { background-color: green; }
+#red { background-color: red; }
+#orange { background-color: orange; }
+#purple { background-color: purple; }
+#grey { background-color: grey; }
+
+
+.blue { color: blue; }
+.green { color: green; }
+.red { color: red; }
+.orange { color: orange; }
+.purple { color: purple; }
+.grey { color: grey; }
+
+.special { color: blue; }
+.selected { border: 2px solid black; } 
+
+</style>
+
+
+<script language="javascript" type="text/javascript">
+
+var chosen = null;
+var wordArray = [];
+
+function term(word, color) {
+
+this.word = word;
+this.color = color;
+
+}
+
+function idToIndex(idstr) {
+
+var part2;
+
+switch(idstr[0]){
+
+case 'A': part2 = 0;
+break;
+case 'B': part2 = 6;
+break;
+case 'C': part2 = 12;
+break;
+case 'D': part2 = 18;
+break;
+case 'E': part2 = 24;
+break;
+case 'F': part2 = 30;
+break;
+default: alert('error !'); 
+}
+
+
+var part1 = parseInt(idstr[1]) - 1;
+
+return part1+part2;  }
+
+function build() { 
+
+wasserBlau = ["Ozean", "Fisch", "Taucher", "Bad", "Schiff"];
+naturGruen = ["Wald", "Baum", "Spatz", "Pflanze", "Hirsch", "Grashüpfer"];
+politikGelb = ["Bank", "Staat", "Amt", "Polizei", "Verkehr", "Verein"];
+medizinRot = ["Wirbelsäule", "Zahnschmelz", "Wunde", "Lunge", "Grippe", "Blutdruck"];
+modeViolett = ["Make-up", "Deodorant", "Haarspray", "Schuhe", "Jacke", "Handtasche"];
+technikSilber = ["Computer", "Staubsauger", "Druckerei", "Küchenmaschine", "Auto", "Wolkenkratzer"];
+
+
+wordArray.push(new term("Blatt","special"));
+
+for(var w = 0; w < wasserBlau.length; w++){
+wordArray.push(new term(wasserBlau[w],"blue") );
+}
+
+for(var w = 0; w < naturGruen.length; w++){
+wordArray.push(new term(naturGruen[w],"green") );
+}
+
+for(var w = 0; w < politikGelb.length; w++){
+wordArray.push(new term(politikGelb[w],"orange") );
+}
+
+for(var w = 0; w < medizinRot.length; w++){
+wordArray.push(new term(medizinRot[w],"red") );
+}
+
+for(var w = 0; w < modeViolett.length; w++){
+wordArray.push(new term(modeViolett[w],"purple") );
+}
+
+for(var w = 0; w < technikSilber.length; w++){
+wordArray.push(new term(technikSilber[w],"grey") );
+}
+
+
+for (i = 0; i < wordArray.length; i++){
+
+r = Math.floor((Math.random()-0.001)*wordArray.length);
+h = wordArray[r];
+wordArray[r] = wordArray[i];
+wordArray[i] = h;
+
+}
+
+for (i = 0; i < wordArray.length; i++){
+
+r = Math.floor((Math.random()-0.001)*wordArray.length);
+h = wordArray[r];
+wordArray[r] = wordArray[i];
+wordArray[i] = h;
+
+}
+
+
+
+spans = document.getElementsByTagName("td");
+
+for(var i = 0; i < spans.length; i++){
+
+spans[i].innerText = wordArray[i].word;
+spans[i].setAttribute("class",wordArray[i].color);
+
+spans[i].addEventListener("click", function() {
+
+if(chosen){
+
+if(chosen.id != this.id){
+
+chosen.classList.remove("selected");
+this.classList.add("selected");
+chosen = this;
+}
+else { 
+
+this.classList.remove("selected");
+chosen = null; }
+
+}
+
+else {
+this.classList.add("selected");
+chosen = this; }
+
+});
+}
+
+var colorbutton = document.getElementsByTagName("button");
+
+
+for (j in colorbutton) {
+
+colorbutton[j].addEventListener("click", function() {
+if(chosen){
+var l = idToIndex(chosen.id);
+chosen.classList.remove(wordArray[l].color);
+wordArray[l].color = this.id;
+chosen.classList.add(this.id);} 
+});
+
+
+			}
+
+
+}
+
+
+function answer(){
+
+var ans = "";
+for (i in wordArray){
+ans += wordArray[i].word + " farbe: " + wordArray[i].color + "  ";}
+
+
+alert(ans);
+
+if(chosen){
+
+if(chosen.classList.contains("special")){
+document.writeln("RICHTIG geraten !");}
+else{ document.writeln("Leider die falsche Antwort :-(");}
+
+}
+
+} 
+
+
+</script>
+
+
+</head>
+
+<body onload="build();">
+
+<div id="title">
+<figure>
+<img src="titel.png" alt="GameTitle" width="1200" height="120">
+<figcaption>Use the hidden hints and secret patterns to guess the right answer<figcaption>
+</figure>
+</div>
+
+
+
+<br> 
+        
+<div id="words">
+
+<table style="width: 100%; height: 180px">
+	<tr> <td id="A1"></td> <td id="A2"></td> <td id="A3"></td> <td id="A4"></td> <td id="A5"></td> <td id="A6"></td> </tr>
+	<tr> <td id="B1"></td> <td id="B2"></td> <td id="B3"></td> <td id="B4"></td> <td id="B5"></td> <td id="B6"></td> </tr>
+	<tr> <td id="C1"></td> <td id="C2"></td> <td id="C3"></td> <td id="C4"></td> <td id="C5"></td> <td id="C6"></td> </tr>
+	<tr> <td id="D1"></td> <td id="D2"></td> <td id="D3"></td> <td id="D4"></td> <td id="D5"></td> <td id="D6"></td> </tr>
+	<tr> <td id="E1"></td> <td id="E2"></td> <td id="E3"></td> <td id="E4"></td> <td id="E5"></td> <td id="E6"></td> </tr>
+        <tr> <td id="F1"></td> <td id="F2"></td> <td id="F3"></td> <td id="F4"></td> <td id="F5"></td> <td id="F6"></td> </tr>
+        
+
+</table>
+
+</div>
+
+<div>
+
+<button id="red"></button> 
+<button id="blue"></button> 
+<button id="green"></button> 
+<button id="orange"></button> 
+<button id="purple"></button> 
+<button id="grey"></button> 
+
+</div>
+
+
+<div id="submit">
+
+<input type="button" id="button" value="Bestätigen" onclick="answer();">
+
+</div>
+
+	
+</body>
+
+
+
+</html>

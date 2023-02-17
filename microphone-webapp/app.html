@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>stroop effekt test</title>
+
+<meta charset="utf-8">
+
+<style>
+
+
+div { text-align: center;
+font-size: 14;
+width: 90vw;
+
+}
+
+p { margin: auto;
+padding: 2vh;
+ }
+ 
+#head { 
+height: 15vh;
+padding: 1vh;
+margin: 1vh;		 
+}
+
+#view {
+
+height: 40vh;
+padding: 8vh;
+
+}
+
+#foot {
+height: 15vh;
+padding: 1vh;
+margin: 1vh;
+
+}
+
+
+
+
+
+
+button:hover {border: 2px solid black; } 
+
+
+/*
+td { 
+display: inline-block;
+padding: 2 em;
+margin: 4 em; 
+font-size: 20 pt;
+font-family: "Arial", sans Serif;
+font-style: bold; 
+} */
+
+#blue { background-color: blue; }
+#green { background-color: green; }
+#red { background-color: red; }
+#orange { background-color: orange; }
+#purple { background-color: purple; }
+#grey { background-color: grey; }
+
+
+.blue { color: blue; }
+.green { color: green; }
+.red { color: red; }
+.orange { color: orange; }
+.purple { color: purple; }
+.grey { color: grey; }
+
+.special { color: blue; }
+.selected { border: 2px solid black; } 
+
+</style>
+
+
+<script src="annyang.min.js"></script>
+<script src="app.js"></script>
+
+</head>
+
+<body>
+
+<div id="head">
+Willkommen bei unserem psychologischem Test
+</div>
+
+<div id="view">
+<p>Es werden nacheinander Wörter von Farben gezeigt und <br>
+die Aufgabe ist so schnell wie möglich den Namen ins Mikrophon zu sprechen <br>
+<span class="orange">grün</span>, <span class="blue">rot</span>, <span class="grey">grau</span>, <span class="purple">violett</span> <br>
+Sobald die Antwort erkannt wurde erscheint das nächste Wort<br>
+Benennen sie alle korrekt wobei die Zeit gestoppt wird - <br>
+Am Ende wird gezeigt wie schnell sie waren,<br> 
+klicken sie auf "Ausprobieren" für ein Beispiel </p>
+</div>
+
+<div id="foot">
+<p>Bevor sie fortfahren stellen sie fest ob ihr Mikrophon an ist und vom Browser aktiviert werden kann, <br>
+geben sie die notwendigen Berechtigungen damit die Seite das Mikrophon verwenden kann. <br> </p>
+<br>
+<button onclick="startTest();" >Ausprobieren</button>
+</div>
+
+</body>
+
+</html>

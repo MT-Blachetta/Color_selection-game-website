@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<script language="javascript" type="text/javascript" src="jquery-3.0.0.min.js"></script>
+
+<script language="javascript" type="text/javascript">
+
+var select = 0;
+
+Array.prototype.permute = function() {
+
+for (i = 0; i < this.length; i++){
+
+r = Math.floor((Math.random()-0.001)*this.length);
+h = this[r];
+this[r] = this[i];
+this[i] = h;
+
+} };
+
+$(document).ready(function(){}),
+
+
+
+
+</script>
+
+
+</head>
+
+<body>
+
+<h1> Einen dieser <b>Begriffe</b> habe ich im Sinn, kannst du es erraten ?  -  Eine dieser <b>Farben</b> habe ich im Sinn, welche wohl ? </h1>
+        <div id="words">
+	<p> <span id="A1"></span> <span id="A2"></span> <span id="A3"></span> <span id="A4"></span> <span id="A5"></span> <span id="A6"></span> </p>
+	<p> <span id="B1"></span> <span id="B2"></span> <span id="B3"></span> <span id="B4"></span> <span id="B5"></span> <span id="B6"></span> </p>
+	<p> <span> </span> <span> </span> <span> </span> <span> </span> <span> </span> <span> </span> </p>
+	<p> <span> </span> <span> </span> <span> </span> <span> </span> <span> </span> <span> </span> </p>
+	<p> <span> </span> <span> </span> <span> </span> <span> </span> <span> </span> <span> </span> </p>
+        <p> <span> </span> <span> </span> <span> </span> <span> </span> <span> </span> <span> </span> </p>
+        </div>
+
+
+	
+</body>
+
+
+
+</html>

@@ -1,0 +1,159 @@
+
+/* GLOBAL VARS  */
+
+/* reset is the only globalVar for all types */
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<style>
+
+§-wordTable /*[selTable(),tableColorStyles();selBorderSize,selBorderStyle]*/
+
+div { text-align: center;
+	height: 200px; }
+
+table {width: 100%; height: 180px}
+
+.$selTable()$ { border: $selBorderSize$px $selBorderStyle$ black; } 
+
+
+$tableColorStyles()$
+
+	§-addColorRequest
+
+	$additionalColorSel()$
+	§
+
+
+§
+
+§-selectColor
+
+$colorSelection()$
+
+.selected { border: 2px solid black; } 
+
+
+	§-modifyBySelection
+  	$ColorSelctionTarget()$
+	§
+
+
+	§-Hint
+	$Hint.style$
+	§
+
+
+§
+
+§-matchQuestion
+
+$Hint.style$
+
+<!-- put here optional parameters for binary choice or range -->
+
+§
+
+</style>
+
+<script src="$page.nr$.js"></script>
+
+
+</head>
+
+
+<body onload="init()">
+
+<div id="title">
+
+<figure>
+<img src="titel.png" alt="GameTitle" width="1200" height="120">
+<figcaption>Use the hidden hints and secret patterns to guess the right answer<figcaption>
+</figure>
+
+</div>
+
+<hr>
+
+<div id="instruction"
+ 
+$UserInstruction$
+
+</div>
+
+<br>
+
+§-Hint
+§
+
+
+
+<id="task">
+
+§-matchQuestion
+
+$mqType()$
+
+§
+
+
+§-wordTable
+
+<table style="width: 100%; height: 180px">
+
+$createTable("tr","td")$
+
+</table>
+
+§
+
+§-LayerOrder
+
+
+<div id="dragTerms">
+
+$putDragItems()$
+
+<div>
+
+<div id="levels">
+
+$placeLayers()$
+
+<div>
+
+§
+
+</div>
+
+<div id="confirm">
+
+$reset$
+
+<input type="button" name="submit" style="margin: 0px 20px 0px 100px" value="CONFIRM" onclick="answer()">
+
+</div>
+
+
+</body>
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+

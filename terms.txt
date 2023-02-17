@@ -1,0 +1,112 @@
+
+var chosen = null;
+
+function term(word, color) {
+
+this.word = word;
+this.color = color;        
+
+}
+
+function build() { 
+
+wasserBlau = ["Ozean", "Fisch", "Taucher", "Bad", "Schiff"];
+naturGruen = ["Wald", "Baum", "Spatz", "Pflanze", "Hirsch", "Grashüpfer"];
+politikGelb = ["Bank", "Staat", "Amt", "Polizei", "Verkehr", "Verein"];
+medizinRot = ["Wirbelsäule", "Zahnschmelz", "Wunde", "Lunge", "Grippe", "Blutdruck"];
+modeViolett = ["Make-up", "Deodorant", "Haarspray", "Schuhe", "Jacke", "Handtasche"];
+technikSilber = ["Computer", "Staubsauger", "Druckerei", "Küchenmaschine", "Auto", "Wolkenkratzer"];
+
+Array.prototype.permute = function() {
+
+for (i = 0; i < this.length; i++){
+
+r = Math.floor((Math.random()-0.001)*this.length);
+h = this[r];
+this[r] = this[i];
+this[i] = h;
+
+} };
+
+
+
+//function termList(){
+
+wordArray = [];
+
+wordArray.push(new term("Blatt","special"));
+
+for(var w = 0; w < wasserBlau.length; w++){
+wordArray.push(new term(wasserBlau[w],"blue") );
+}
+
+for(var w = 0; w < naturGruen.length; w++){
+wordArray.push(new term(naturGruen[w],"green") );
+}
+
+for(var w = 0; w < politikGelb.length; w++){
+wordArray.push(new term(politikGelb[w],"yellow") );
+}
+
+for(var w = 0; w < medizinRot.length; w++){
+wordArray.push(new term(medizinRot[w],"red") );
+}
+
+for(var w = 0; w < modeViolett.length; w++){
+wordArray.push(new term(modeViolett[w],"purple") );
+}
+
+for(var w = 0; w < technikSilber.length; w++){
+wordArray.push(new term(technikSilber[w],"silver") );
+}
+
+wordArray.permute();
+wordArray.permute();
+
+
+spans = document.getElementsByTagName("span");
+
+for(i in spans){
+
+spans[i].innerText = wordArray[i].word;
+spans[i].setAttribute("class",wordArray[i].color);
+
+spans[i].addEventListener("click", function() {
+
+if(chosen){
+
+if(chosen.id != this.id){
+
+chosen.classList.remove("selected");
+this.classList.add("selected");
+chosen = this;
+}
+else { 
+this.classList.remove("selected");
+chosen = null; }
+
+}
+
+else {
+this.classList.add("selected");
+chosen = this; }
+
+});
+}
+
+}
+
+
+function answer(){
+
+if(chosen){
+
+if(chosen.classList.contains("special")){
+document.writeln("RICHTIG geraten !");}
+else{ document.writeln("Leider die falsche Antwort :-(");}
+
+}
+
+} 
+
+

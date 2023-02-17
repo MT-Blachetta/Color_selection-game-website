@@ -1,0 +1,61 @@
+'<span id="'       '"'
+
+
+blue
+red
+yellow
+green
+purple
+orange
+pink
+cyan
+Brown
+
+/[*].*?[*]/
+
+
+idToIndex(idstr) {
+
+var part2;
+
+switch(idstr[0]){
+
+case 'A': part2 = 0;
+break;
+case 'B': part2 = 6;
+break;
+case 'C': part2 = 12;
+break;
+case 'D': part2 = 18;
+break;
+case 'E': part2 = 24;
+break;
+case 'F': part2 = 30;
+break;
+default: alert('error !'); }
+
+
+var part1 = parseInt(idstr[1]) - 1;
+
+return part1+part2;  }
+
+----------------------------------------------------------------------------------------------
+
+colors = [blue, red, green, yellow, orange, purple, pink, brown, black, cyan, grey, magenta]
+
+
+
+Table
+
+
+termPerClass = 3;
+Class = 2;
+special = false;
+
+classA(color=xxx): word1,word2,...
+...
+special(color=xxx,<term>)
+
+selectable
+
+ 
